@@ -1,0 +1,29 @@
+
+# Compilazione .NET
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# VS Code
+.vscode/
+
+# File temporanei
+*.log
+*.tmp
+
+# Credenziali e segreti
+.env
+.env.*
+!.env.example
+secrets.json
+appsettings.Development.json
+
+# Certificati e chiavi private
+*.pfx
+*.p12
+*.pem
+*.key
