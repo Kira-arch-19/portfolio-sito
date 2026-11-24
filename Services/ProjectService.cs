@@ -6,7 +6,6 @@ using Portfolio.Models;
 using Portfolio.Services.Interfaces;
 
 namespace Portfolio.Services;
-
 public class ProjectService : IProjectService
 {
     private readonly AppDbContext _context;
@@ -16,13 +15,20 @@ public class ProjectService : IProjectService
         _context = context;
     }
 
-   public async Task<Project> CreateAsync(Project project)
+  public async Task<Project> CreateAsync(Project project)
 {
-    Project? existingProject = await GetByIdAsync(project.Id);
+    bool exists = await _context.Projects
+        .AnyAsync(p => p.Name == project.Name);
 
-    if (existingProject.Id == project.Id)
+    if (exists)
+    {
+        throw new InvalidOperationException(
+            "Esiste già un progetto con questo nome"
+        );
+    }
 
     _context.Projects.Add(project);
+
     await _context.SaveChangesAsync();
 
     return project;
