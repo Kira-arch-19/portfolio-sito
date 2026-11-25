@@ -1,48 +1,352 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿/* ==========================================
+   NAVBAR
+   ========================================== */
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
+.portfolio-navbar {
+    background-color: rgba(255, 255, 255, 0.95);
 
-a {
-  color: #0077cc;
-}
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    border-bottom: 1px solid var(--portfolio-border);
+
+    padding: 14px 0;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+
+/* ==========================================
+   LOGO - CONTENITORE PRINCIPALE
+   ========================================== */
+
+.portfolio-brand {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-shrink: 0;
+
+    gap: 12px;
+
+    margin: 0;
+    padding: 0;
+
+    color: var(--portfolio-text);
+
+    text-decoration: none;
+    text-align: left;
+
+    white-space: nowrap;
+    word-break: normal;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+.portfolio-brand:hover {
+    color: var(--portfolio-text);
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+
+/* ==========================================
+   LOGO - ICONA MP
+   ========================================== */
+
+.brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 42px;
+    height: 42px;
+
+    background-color: var(--portfolio-primary);
+    color: #ffffff;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0;
+
+    white-space: nowrap;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+
+/* ==========================================
+   LOGO - CONTENITORE TESTO
+   ========================================== */
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 4px;
+
+    white-space: nowrap;
+    word-break: normal;
 }
+
+
+/* ==========================================
+   LOGO - NOME
+   ========================================== */
+
+.brand-name {
+    display: block;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    line-height: 1;
+    letter-spacing: -0.5px;
+
+    color: var(--portfolio-text);
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   LOGO - PROFESSIONE
+   ========================================== */
+
+.brand-role {
+    display: block;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    line-height: 1.2;
+    letter-spacing: 0;
+
+    color: var(--portfolio-secondary);
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   NAVBAR - COLLEGAMENTI
+   ========================================== */
+
+.portfolio-navbar .nav-link {
+    position: relative;
+
+    color: #475569;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    padding: 8px 0;
+
+    white-space: nowrap;
+
+    transition: color 0.2s ease;
+}
+
+.portfolio-navbar .nav-link:hover {
+    color: var(--portfolio-primary);
+}
+
+
+/* ==========================================
+   NAVBAR - SOTTOLINEATURA ANIMATA
+   ========================================== */
+
+.portfolio-navbar .nav-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background-color: var(--portfolio-primary);
+
+    border-radius: 2px;
+
+    transition: width 0.25s ease;
+}
+
+.portfolio-navbar .nav-link:hover::after,
+.portfolio-navbar .nav-link:focus-visible::after {
+    width: 100%;
+}
+
+
+/* ==========================================
+   NAVBAR - PULSANTE GITHUB
+   ========================================== */
+
+.navbar-github {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 10px 24px;
+
+    background-color: var(--portfolio-primary);
+    color: #ffffff;
+
+    border-radius: var(--portfolio-radius);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.navbar-github:hover {
+    background-color: var(--portfolio-primary-hover);
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 4px 12px rgba(0, 4, 255, 0.15);
+}
+
+.navbar-github:active {
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   MENU MOBILE
+   ========================================== */
+
+.navbar-toggler {
+    border: none;
+    padding: 6px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler:focus-visible {
+    outline: 2px solid var(--portfolio-primary);
+    outline-offset: 3px;
+}
+
+
+/* ==========================================
+   FOOTER
+   ========================================== */
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    width: 100%;
+
+    margin-top: auto;
+    padding: 20px 0;
+
+    background-color: var(--portfolio-background);
+
+    border-top: 1px solid var(--portfolio-border);
+
+    color: var(--portfolio-secondary);
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   RESPONSIVE - TABLET
+   ========================================== */
+
+@media (max-width: 991.98px) {
+
+    .portfolio-navbar .navbar-collapse {
+        padding-top: 20px;
+    }
+
+    .portfolio-navbar .nav-item {
+        margin: 6px 0;
+    }
+
+    .portfolio-navbar .nav-link {
+        padding: 10px 0;
+    }
+
+    .portfolio-navbar .nav-link::after {
+        display: none;
+    }
+
+    .navbar-github {
+        margin-top: 8px;
+    }
+}
+
+
+/* ==========================================
+   RESPONSIVE - SMARTPHONE
+   ========================================== */
+
+@media (max-width: 480px) {
+
+    .portfolio-navbar {
+        padding: 12px 0;
+    }
+
+    .portfolio-brand {
+        gap: 8px;
+    }
+
+    .brand-icon {
+        width: 36px;
+        height: 36px;
+
+        font-size: 14px;
+        border-radius: 8px;
+    }
+
+    .brand-name {
+        font-size: 18px;
+    }
+
+    .brand-role {
+        font-size: 10px;
+    }
+
+    .navbar-github {
+        width: 100%;
+    }
+}
+
+
+/* ==========================================
+   ACCESSIBILITÀ
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .portfolio-navbar .nav-link,
+    .portfolio-navbar .nav-link::after,
+    .navbar-github {
+        transition: none;
+    }
+
+    .navbar-github:hover {
+        transform: none;
+    }
 }
