@@ -27,3 +27,4 @@ appsettings.Development.json
 *.p12
 *.pem
 *.key
+wwwroot/uploads/
