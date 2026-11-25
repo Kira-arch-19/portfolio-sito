@@ -7,15 +7,32 @@
 
 <div class="container py-5">
 
-    <h1 class="fw-bold mb-3">
-        Dashboard amministratore
-    </h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="fw-bold mb-2">
+                Dashboard amministratore
+            </h1>
 
-    <p class="text-secondary">
-        Benvenuto nel pannello di gestione del Portfolio.
-    </p>
+            <p class="text-secondary">
+                Gestisci i contenuti del tuo Portfolio.
+            </p>
+        </div>
 
-    <div class="card shadow-sm mt-4">
+        <a asp-controller="Admin"
+           asp-action="Create"
+           class="btn btn-primary">
+            + Nuovo progetto
+        </a>
+    </div>
+
+    @if (TempData["SuccessMessage"] is string message)
+    {
+        <div class="alert alert-success">
+            @message
+        </div>
+    }
+
+    <div class="card shadow-sm mb-4">
         <div class="card-body">
 
             <h2 class="h5">Progetti presenti</h2>
@@ -23,6 +40,57 @@
             <p class="display-5 fw-bold">
                 @Model.Count
             </p>
+
+        </div>
+    </div>
+
+    <h2 class="h4 fw-bold mb-3">
+        Elenco progetti
+    </h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            @if (Model.Count == 0)
+            {
+                <p class="text-secondary mb-0">
+                    Nessun progetto presente.
+                </p>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Descrizione breve</th>
+                                <th>Azioni</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var project in Model)
+                            {
+                                <tr>
+                                    <td>@project.Id</td>
+                                    <td>@project.Name</td>
+                                    <td>@project.ShortDescription</td>
+                                    <td>
+                                        <a asp-controller="Project"
+                                           asp-action="Page"
+                                           asp-route-id="@project.Id"
+                                           class="btn btn-outline-primary btn-sm">
+                                            Visualizza
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
 
         </div>
     </div>

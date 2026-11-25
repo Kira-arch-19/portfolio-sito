@@ -1,0 +1,112 @@
+
+@model Portfolio.DTOs.Projects.CreateProjectDto
+
+@{
+    ViewData["Title"] = "Nuovo progetto";
+}
+
+<div class="container py-5">
+
+    <h1 class="fw-bold mb-4">
+        Aggiungi nuovo progetto
+    </h1>
+
+    <form asp-controller="Admin"
+          asp-action="Create"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3"></div>
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">
+                Nome progetto
+            </label>
+
+            <input asp-for="Name"
+                   class="form-control" />
+
+            <span asp-validation-for="Name"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ShortDescription"
+                   class="form-label">
+                Descrizione breve
+            </label>
+
+            <textarea asp-for="ShortDescription"
+                      class="form-control"
+                      rows="2"></textarea>
+
+            <span asp-validation-for="ShortDescription"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description"
+                   class="form-label">
+                Descrizione completa
+            </label>
+
+            <textarea asp-for="Description"
+                      class="form-control"
+                      rows="5"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Technologies"
+                   class="form-label">
+                Tecnologie utilizzate
+            </label>
+
+            <input asp-for="Technologies"
+                   class="form-control"
+                   placeholder="C#, ASP.NET Core, PostgreSQL" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="GithubLink"
+                   class="form-label">
+                Repository GitHub
+            </label>
+
+            <input asp-for="GithubLink"
+                   class="form-control"
+                   placeholder="https://github.com/..." />
+
+            <span asp-validation-for="GithubLink"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="SkillImproved"
+                   class="form-label">
+                Competenze sviluppate
+            </label>
+
+            <textarea asp-for="SkillImproved"
+                      class="form-control"
+                      rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Salva progetto
+        </button>
+
+        <a asp-controller="Admin"
+           asp-action="Index"
+           class="btn btn-outline-secondary ms-2">
+            Annulla
+        </a>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
