@@ -125,7 +125,7 @@ public async Task<IActionResult> Delete(int id)
     }
 
 
-[HttpGet("{id:int}/pagina")]
+[HttpGet("/pagina/{id:int}")]
 public async Task<IActionResult> Page(int id)
 {
     if (id <= 0)
