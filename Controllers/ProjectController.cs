@@ -4,6 +4,7 @@ using Portfolio.Services.Interfaces;
 using Portfolio.DTOs.Projects;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Portfolio.Services;
+using Microsoft.AspNetCore.Authorization;
 namespace Portfolio.Controllers;
 
 [Route("project")]
@@ -38,7 +39,7 @@ public async Task<IActionResult> Index()
         return Ok(project);
     }
     
-    
+[Authorize(Roles = "Admin")]    
 [HttpPost("")]
 public async Task<IActionResult> Create(
     [FromBody] CreateProjectDto request)
@@ -72,6 +73,7 @@ public async Task<IActionResult> Create(
         return Conflict(new { message = ex.Message });
     }
 }
+[Authorize(Roles = "Admin")]
 
 [HttpPut("{id:int}")]
 public async Task<IActionResult> Update(
@@ -108,6 +110,7 @@ public async Task<IActionResult> Update(
 
     return Ok(updatedProject);
 }
+[Authorize(Roles = "Admin")]
 
 [HttpDelete("{id:int}")]
 public async Task<IActionResult> Delete(int id)
