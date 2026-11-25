@@ -42,6 +42,11 @@ namespace Portfolio.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("character varying(150)");
 
+                    b.Property<string>("ShortDescription")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
                     b.Property<string>("SkillImproved")
                         .IsRequired()
                         .HasColumnType("text");
