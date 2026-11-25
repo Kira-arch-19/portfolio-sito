@@ -97,6 +97,68 @@ builder.Services.AddScoped<IProjectService, ProjectService>();
 
 var app = builder.Build();
 
+if (app.Environment.IsDevelopment())
+{
+    using var scope = app.Services.CreateScope();
+
+    var userManager = scope.ServiceProvider
+        .GetRequiredService<UserManager<ApplicationUser>>();
+
+    var roleManager = scope.ServiceProvider
+        .GetRequiredService<RoleManager<IdentityRole>>();
+
+    string? email = app.Configuration["AdminSeed:Email"];
+    string? password = app.Configuration["AdminSeed:Password"];
+
+    if (!string.IsNullOrWhiteSpace(email) &&
+        !string.IsNullOrWhiteSpace(password))
+    {
+        // Crea il ruolo Admin
+        if (!await roleManager.RoleExistsAsync("Admin"))
+        {
+            var roleResult = await roleManager.CreateAsync(
+                new IdentityRole("Admin"));
+
+            if (!roleResult.Succeeded)
+                throw new Exception(string.Join(", ",
+                    roleResult.Errors.Select(e => e.Description)));
+        }
+
+        // Cerca l'utente
+        var admin = await userManager.FindByEmailAsync(email);
+
+        // Crea l'utente solo se non esiste
+        if (admin == null)
+        {
+            admin = new ApplicationUser
+            {
+                UserName = email,
+                Email = email
+            };
+
+            var result = await userManager.CreateAsync(
+                admin, password);
+
+            if (!result.Succeeded)
+                throw new Exception(string.Join(", ",
+                    result.Errors.Select(e => e.Description)));
+        }
+
+        // Assegna il ruolo Admin
+        if (!await userManager.IsInRoleAsync(admin, "Admin"))
+        {
+            var result = await userManager.AddToRoleAsync(
+                admin, "Admin");
+
+            if (!result.Succeeded)
+                throw new Exception(string.Join(", ",
+                    result.Errors.Select(e => e.Description)));
+        }
+
+        Console.WriteLine("ADMIN CONFIGURATO CORRETTAMENTE");
+    }
+}
+
 // Gestione errori e HTTPS
 if (!app.Environment.IsDevelopment())
 {
