@@ -16,14 +16,14 @@ public abstract class CrudService<T> : ICrudService<T>
         _context = context;
     }
 
-    public async Task<List<T>> GetAllAsync()
+    public virtual async Task<List<T>> GetAllAsync()
     {
         return await _context.Set<T>()
             .AsNoTracking()
             .ToListAsync();
     }
 
-    public async Task<T?> GetByIdAsync(int id)
+    public virtual async Task<T?> GetByIdAsync(int id)
     {
         return await _context.Set<T>()
             .AsNoTracking()
@@ -77,5 +77,4 @@ public abstract class CrudService<T> : ICrudService<T>
 
         return true;
     }
-
 }

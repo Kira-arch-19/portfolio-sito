@@ -23,13 +23,23 @@ public class AccountController : Controller
     }
 
     // GET /account/login
-    [AllowAnonymous]
-    [HttpGet("login")]
-    public IActionResult Login(string? returnUrl = null)
+    
+[AllowAnonymous]
+[HttpGet("login")]
+public IActionResult Login(string? returnUrl = null)
+{
+    // Se l'amministratore è già autenticato
+    if (User.Identity?.IsAuthenticated == true &&
+        User.IsInRole("Admin"))
     {
-        ViewData["ReturnUrl"] = returnUrl;
-        return View(new LoginViewModel());
+        return RedirectToAction("Index", "Admin");
     }
+
+    ViewData["ReturnUrl"] = returnUrl;
+
+    return View(new LoginViewModel());
+}
+
 
     // POST /account/login
     [AllowAnonymous]

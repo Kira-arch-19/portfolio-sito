@@ -22,4 +22,5 @@ public class Project : IEntity
     public string GithubLink { get; set; } = string.Empty;
 
     public string SkillImproved { get; set; } = string.Empty;
+    public List<ProjectImage> Images { get; set; } = new();
 }

@@ -7,6 +7,7 @@
 
 <section class="py-5 text-center">
     <div class="container">
+
         <p class="text-primary fw-semibold">
             Junior Software Developer
         </p>
@@ -21,9 +22,11 @@
             C#, Java e tecnologie moderne.
         </p>
 
-        <a href="#progetti" class="btn btn-primary mt-3">
+        <a href="#progetti"
+           class="btn btn-primary mt-3">
             Scopri i miei progetti
         </a>
+
     </div>
 </section>
 
@@ -46,11 +49,36 @@
 
                 @foreach (var project in Model)
                 {
+                    var cover = project.Images
+                        .FirstOrDefault(i => i.IsCover)
+                        ?? project.Images
+                            .OrderBy(i => i.Position)
+                            .FirstOrDefault();
+
                     <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 shadow-sm">
+                        <div class="card h-100 shadow-sm overflow-hidden">
+
+                            @if (cover != null)
+                            {
+                                <img src="@cover.ImageUrl"
+                                     class="card-img-top"
+                                     alt="Copertina di @project.Name"
+                                     loading="lazy"
+                                     style="aspect-ratio: 16/9; object-fit: cover;" />
+                            }
+                            else
+                            {
+                                <div class="bg-body-tertiary d-flex align-items-center justify-content-center"
+                                     style="aspect-ratio: 16/9;">
+                                    <span class="text-secondary">
+                                        Nessuna immagine
+                                    </span>
+                                </div>
+                            }
+
                             <div class="card-body d-flex flex-column">
 
-                                <h3 class="h5 card-title">
+                                <h3 class="h5 card-title fw-bold">
                                     @project.Name
                                 </h3>
 
@@ -58,20 +86,31 @@
                                     @project.ShortDescription
                                 </p>
 
-                                <p class="small">
+                                <p class="small text-secondary">
                                     <strong>Tecnologie:</strong>
                                     @project.Technologies
                                 </p>
 
-                                @if (!string.IsNullOrWhiteSpace(project.GithubLink))
-                                {
-                                    <a href="@project.GithubLink"
-                                       target="_blank"
-                                       rel="noopener noreferrer"
-                                       class="btn btn-outline-primary mt-auto">
-                                        Visualizza su GitHub
+                                <div class="mt-auto d-grid gap-2">
+
+                                    <a asp-controller="Project"
+                                       asp-action="Page"
+                                       asp-route-id="@project.Id"
+                                       class="btn btn-primary">
+                                        Scopri il progetto
                                     </a>
-                                }
+
+                                    @if (!string.IsNullOrWhiteSpace(project.GithubLink))
+                                    {
+                                        <a href="@project.GithubLink"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="btn btn-outline-secondary">
+                                            Repository GitHub
+                                        </a>
+                                    }
+
+                                </div>
 
                             </div>
                         </div>

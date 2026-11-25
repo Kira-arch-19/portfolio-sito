@@ -1,0 +1,35 @@
+
+<form action="/admin/projects/@Model.Id/images"
+      method="post"
+      enctype="multipart/form-data">
+
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label class="form-label">
+            Immagine di copertina
+        </label>
+
+        <input type="file"
+               name="cover"
+               accept="image/jpeg,image/png,image/webp"
+               class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">
+            Immagini della galleria
+        </label>
+
+        <input type="file"
+               name="gallery"
+               accept="image/jpeg,image/png,image/webp"
+               multiple
+               class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Carica immagini
+    </button>
+
+</form>

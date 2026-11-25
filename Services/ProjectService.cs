@@ -14,6 +14,7 @@ public class ProjectService
     {
     }
 
+    // Ricerca per nome
     public async Task<Project?> GetByNameAsync(string name)
     {
         return await _context.Projects
@@ -21,6 +22,7 @@ public class ProjectService
             .FirstOrDefaultAsync(p => p.Name == name);
     }
 
+    // CREATE - Controllo nome duplicato
     public override async Task<Project> CreateAsync(Project project)
     {
         bool exists = await _context.Projects
@@ -33,5 +35,23 @@ public class ProjectService
         }
 
         return await base.CreateAsync(project);
+    }
+
+    // READ - Tutti i progetti con immagini
+    public override async Task<List<Project>> GetAllAsync()
+    {
+        return await _context.Projects
+            .Include(p => p.Images)
+            .AsNoTracking()
+            .ToListAsync();
+    }
+
+    // READ - Singolo progetto con immagini
+    public override async Task<Project?> GetByIdAsync(int id)
+    {
+        return await _context.Projects
+            .Include(p => p.Images)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(p => p.Id == id);
     }
 }

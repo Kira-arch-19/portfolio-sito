@@ -7,6 +7,7 @@
 
 <div class="container py-5">
 
+    <!-- INTESTAZIONE -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h1 class="fw-bold mb-2">
@@ -25,25 +26,34 @@
         </a>
     </div>
 
+    <!-- MESSAGGI DI CONFERMA -->
     @if (TempData["SuccessMessage"] is string message)
     {
-        <div class="alert alert-success">
+        <div class="alert alert-success alert-dismissible fade show"
+             role="alert">
+
             @message
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Chiudi">
+            </button>
         </div>
     }
 
+    <!-- STATISTICHE -->
     <div class="card shadow-sm mb-4">
         <div class="card-body">
-
             <h2 class="h5">Progetti presenti</h2>
 
-            <p class="display-5 fw-bold">
+            <p class="display-5 fw-bold mb-0">
                 @Model.Count
             </p>
-
         </div>
     </div>
 
+    <!-- ELENCO PROGETTI -->
     <h2 class="h4 fw-bold mb-3">
         Elenco progetti
     </h2>
@@ -61,6 +71,7 @@
             {
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
+
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -75,19 +86,56 @@
                             {
                                 <tr>
                                     <td>@project.Id</td>
-                                    <td>@project.Name</td>
-                                    <td>@project.ShortDescription</td>
+
+                                    <td class="fw-semibold">
+                                        @project.Name
+                                    </td>
+
                                     <td>
-                                        <a asp-controller="Project"
-                                           asp-action="Page"
-                                           asp-route-id="@project.Id"
-                                           class="btn btn-outline-primary btn-sm">
-                                            Visualizza
-                                        </a>
+                                        @project.ShortDescription
+                                    </td>
+
+                                    <td>
+                                        <div class="d-flex flex-wrap gap-2">
+
+                                            <!-- VISUALIZZA -->
+                                            <a asp-controller="Project"
+                                               asp-action="Page"
+                                               asp-route-id="@project.Id"
+                                               class="btn btn-outline-primary btn-sm">
+                                                Visualizza
+                                            </a>
+
+                                            <!-- MODIFICA -->
+                                            <a asp-controller="Admin"
+                                               asp-action="Update"
+                                               asp-route-id="@project.Id"
+                                               class="btn btn-outline-secondary btn-sm">
+                                                Modifica
+                                            </a>
+
+                                            <!-- GESTISCI IMMAGINI -->
+                                            <a asp-controller="Admin"
+                                               asp-action="Images"
+                                               asp-route-id="@project.Id"
+                                               class="btn btn-outline-info btn-sm">
+                                                Gestisci immagini
+                                            </a>
+
+                                            <!-- ELIMINA -->
+                                            <a asp-controller="Admin"
+                                               asp-action="Delete"
+                                               asp-route-id="@project.Id"
+                                               class="btn btn-outline-danger btn-sm">
+                                                Elimina
+                                            </a>
+
+                                        </div>
                                     </td>
                                 </tr>
                             }
                         </tbody>
+
                     </table>
                 </div>
             }
