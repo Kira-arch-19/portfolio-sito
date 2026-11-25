@@ -15,7 +15,6 @@
     // 1. MVC E RAZOR
     // ==========================================
 
-    builder.Services.AddControllersWithViews();
     builder.Services.AddControllersWithViews(options =>
     {
     options.Filters.Add(
