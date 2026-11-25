@@ -3,6 +3,7 @@ using Portfolio.Models;
 using Portfolio.Services.Interfaces;
 using Portfolio.DTOs.Projects;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Portfolio.Services;
 namespace Portfolio.Controllers;
 
 [Route("project")]
@@ -13,9 +14,9 @@ public class ProjectController : Controller
     public ProjectController(IProjectService projectService)
     {
         _projectService = projectService;
-    }
+    }   
 
-    [HttpGet("")]
+        [HttpGet("")]
 public async Task<IActionResult> Index()
 {
     List<Project> projects = await _projectService.GetAllAsync();
@@ -122,4 +123,25 @@ public async Task<IActionResult> Delete(int id)
         }
         return NoContent();
     }
+
+
+[HttpGet("{id:int}/pagina")]
+public async Task<IActionResult> Page(int id)
+{
+    if (id <= 0)
+    {
+        return BadRequest("ID non valido");
+    }
+
+    Project? project =
+        await _projectService.GetByIdAsync(id);
+
+    if (project == null)
+    {
+        return NotFound("Progetto non trovato");
+    }
+
+    return View("Details", project);
+}
+
 }

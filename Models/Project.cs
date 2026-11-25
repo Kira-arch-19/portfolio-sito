@@ -1,9 +1,10 @@
 
 using System.ComponentModel.DataAnnotations;
+using Portfolio.Models.Interfaces;
 
 namespace Portfolio.Models;
 
-public class Project
+public class Project : IEntity
 {
     public int Id { get; set; }
 

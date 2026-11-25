@@ -1,0 +1,88 @@
+
+@model Portfolio.Models.Project
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<section class="py-5">
+    <div class="container">
+
+        <a asp-controller="Home"
+           asp-action="Index"
+           asp-fragment="progetti"
+           class="text-decoration-none">
+            ← Torna ai progetti
+        </a>
+
+        <div class="row mt-4 g-5">
+
+            <div class="col-lg-8">
+
+                <span class="text-primary fw-semibold">
+                    Progetto software
+                </span>
+
+                <h1 class="display-5 fw-bold mt-2">
+                    @Model.Name
+                </h1>
+
+                <p class="lead text-secondary mt-3">
+                    @Model.ShortDescription
+                </p>
+
+                <hr class="my-4" />
+
+                <h2 class="h4 fw-bold">
+                    Descrizione
+                </h2>
+
+                <p class="text-secondary">
+                    @Model.Description
+                </p>
+
+                @if (!string.IsNullOrWhiteSpace(Model.GithubLink))
+                {
+                    <a href="@Model.GithubLink"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn btn-primary mt-3">
+                        Visualizza repository GitHub
+                    </a>
+                }
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+
+                        <h3 class="h5 fw-bold">
+                            Informazioni
+                        </h3>
+
+                        <h4 class="h6 mt-4">
+                            Tecnologie utilizzate
+                        </h4>
+
+                        <p class="text-secondary">
+                            @Model.Technologies
+                        </p>
+
+                        <h4 class="h6 mt-4">
+                            Competenze sviluppate
+                        </h4>
+
+                        <p class="text-secondary">
+                            @Model.SkillImproved
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

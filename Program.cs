@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Data;
+using Portfolio.Models;
 using Portfolio.Services;
 using Portfolio.Services.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")
     );
 });
-builder.Services.AddScoped<IProjectService,ProjectService>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
 var app = builder.Build();
 
 // Configurazione HTTP
