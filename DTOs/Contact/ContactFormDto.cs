@@ -19,5 +19,5 @@ public class ContactFormDto
 
     // Campo esca antispam: deve restare vuoto.
     [StringLength(150)]
-    public string Website { get; set; } = string.Empty;
+    public string? Website { get; set; }
 }
