@@ -1,0 +1,107 @@
+/* Home Portfolio - stili dedicati, isolati dal resto del sito */
+:root {
+    --home-navy: #12203b;
+    --home-blue: #2655e7;
+    --home-blue-dark: #1742cf;
+    --home-ink: #14223b;
+    --home-muted: #64748b;
+    --home-stroke: #e2e8f0;
+}
+
+html { scroll-behavior: smooth; }
+.portfolio-home { color: var(--home-ink); }
+.portfolio-home section[id] { scroll-margin-top: 90px; }
+.portfolio-home .btn-primary {
+    --bs-btn-bg: var(--home-blue);
+    --bs-btn-border-color: var(--home-blue);
+    --bs-btn-hover-bg: var(--home-blue-dark);
+    --bs-btn-hover-border-color: var(--home-blue-dark);
+}
+.portfolio-home .btn-outline-primary {
+    --bs-btn-color: var(--home-blue);
+    --bs-btn-border-color: var(--home-blue);
+    --bs-btn-hover-bg: var(--home-blue);
+    --bs-btn-hover-border-color: var(--home-blue);
+}
+.home-section { padding: 5rem 0; border-bottom: 1px solid var(--home-stroke); }
+.home-hero { padding: 5rem 0 5.5rem; border-bottom: 1px solid var(--home-stroke); }
+.home-eyebrow {
+    font-size: .77rem; font-weight: 800; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--home-blue);
+}
+.home-hero-title {
+    max-width: 780px; font-size: clamp(2.45rem, 5vw, 4.5rem);
+    letter-spacing: -.055em; line-height: 1.09; font-weight: 800;
+}
+.home-hero-title span { color: var(--home-blue); }
+.home-hero-description { max-width: 710px; color: var(--home-muted); font-size: 1.13rem; line-height: 1.78; }
+.home-hero-description strong { color: var(--home-ink); }
+.home-hero-tags { display: flex; flex-wrap: wrap; gap: .6rem; }
+.home-hero-tags span,
+.home-tag-list span {
+    display: inline-block; padding: .36rem .78rem; border-radius: 999px;
+    border: 1px solid #dce6ff; background: #f0f5ff;
+    color: #294a93; font-size: .81rem; font-weight: 600;
+}
+.home-profile-card {
+    padding: 2rem; color: white; background:
+      radial-gradient(circle at 100% 0%, #3c66d9 0%, transparent 48%),
+      linear-gradient(145deg, #15294d 0%, #0d1730 100%);
+    border-radius: 1.35rem; box-shadow: 0 20px 50px rgba(17,36,82,.14);
+}
+.home-monogram {
+    height: 72px; width: 72px; display: flex; justify-content: center;
+    align-items: center; border-radius: 18px; background: rgba(255,255,255,.15);
+    font-size: 1.55rem; font-weight: 800; margin-bottom: 2rem;
+}
+.home-profile-detail {
+    display: flex; justify-content: space-between; gap: 1.4rem;
+    padding: .9rem 0; border-top: 1px solid rgba(255,255,255,.17); font-size: .91rem;
+}
+.home-profile-detail span { color: #b9c8e6; }
+.home-profile-detail strong { text-align: right; }
+.home-section-title { font-size: clamp(1.9rem, 3.2vw, 2.75rem); line-height: 1.16; letter-spacing: -.035em; font-weight: 800; margin-bottom: 1.35rem; }
+.home-lead { font-size: clamp(1.13rem, 2vw, 1.37rem); line-height: 1.65; font-weight: 500; }
+.home-info-card {
+    padding: 1.75rem; background: white; border: 1px solid var(--home-stroke);
+    border-radius: 1rem; transition: transform .2s ease, box-shadow .2s ease;
+}
+.home-info-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(16,32,65,.075); }
+.home-info-card h3 { font-size: 1.28rem; font-weight: 750; margin: .45rem 0 .7rem; }
+.home-info-card p { color: var(--home-muted); line-height: 1.68; }
+.home-info-card p.fw-semibold { color: var(--home-ink); }
+.home-card-number { color: var(--home-blue); font-weight: 800; font-size: .84rem; }
+.home-tag-list { display: flex; flex-wrap: wrap; gap: .45rem; }
+.home-soft-skills { background: #f7f9fd; border: 1px solid var(--home-stroke); border-radius: 1rem; padding: 1.5rem; }
+.home-project-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--home-stroke); border-radius: 1rem; background: white; box-shadow: 0 5px 25px rgba(17,36,82,.055); }
+.home-project-image { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: #f5f7fb; }
+.home-project-placeholder { aspect-ratio: 16 / 10; display: grid; place-items: center; background: linear-gradient(145deg,#e7eeff,#d8e4ff); color: #5673bb; letter-spacing: .15em; font-size: .78rem; font-weight: 700; }
+.home-project-body { display: flex; flex-direction: column; align-items: flex-start; flex: 1; padding: 1.5rem; }
+.home-project-overline { color: var(--home-blue); font-size: .75rem; font-weight: 800; letter-spacing: .14em; }
+.home-project-technologies { font-size: .82rem; font-weight: 600; color: #3b5b93; padding: .5rem .75rem; border-radius: .5rem; background: #f0f5ff; }
+.home-text-link { color: var(--home-blue); font-weight: 700; text-decoration: none; }
+.home-text-link:hover { text-decoration: underline; }
+.home-empty-state { border: 1px dashed #bdcbe0; border-radius: .8rem; padding: 3rem; color: var(--home-muted); text-align: center; }
+.home-mini-label { color: var(--home-blue) !important; font-size: .76rem; font-weight: 800; letter-spacing: .09em; }
+.home-timeline { border-left: 2px solid #ccd9f8; margin-left: .6rem; }
+.home-timeline-item { display: grid; grid-template-columns: 130px 1fr; gap: 1.5rem; padding: 0 0 2rem 1.65rem; position: relative; }
+.home-timeline-item::before { content: ''; position: absolute; left: -8px; top: 3px; width: 14px; height: 14px; background: var(--home-blue); border: 3px solid #eef3ff; border-radius: 50%; }
+.home-timeline-date { font-size: .88rem; color: var(--home-blue); font-weight: 700; }
+.home-timeline-item h3 { font-size: 1.16rem; font-weight: 800; margin: 0 0 .4rem; }
+.home-courses-note { padding: 1.2rem 1.5rem; border-radius: .75rem; background: #f4f7fd; color: var(--home-muted); line-height: 1.7; }
+.home-contact-section { background: linear-gradient(135deg, #172d56, #101b35); color: #fff; border-radius: 1.25rem; padding: 3.3rem; margin: 3.5rem 0 5rem; border: none; }
+.home-contact-section .home-eyebrow { color: #9bb7ff; }
+.home-contact-section p { color: #d1ddf1; line-height: 1.7; }
+.home-contact-section .btn-outline-light:hover { color: #12203b; }
+@media (max-width: 767.98px) {
+    .home-hero { padding: 2.7rem 0 3.5rem; }
+    .home-section { padding: 3.3rem 0; }
+    .home-profile-card { padding: 1.5rem; }
+    .home-timeline-item { grid-template-columns: 1fr; gap: .35rem; }
+    .home-contact-section { padding: 2rem 1.4rem; margin-bottom: 3rem; }
+    .portfolio-home .btn-lg { font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .home-info-card { transition: none; }
+}

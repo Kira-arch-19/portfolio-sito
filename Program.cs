@@ -3,7 +3,8 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
     using Portfolio.Data;
     using Portfolio.Models;
     using Portfolio.Services;
@@ -94,7 +95,22 @@
     // ==========================================
 
     builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<IContactEmailService, ContactEmailService>();
 
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.AddPolicy("contact", context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 3,
+                Window = TimeSpan.FromMinutes(10),
+                QueueLimit = 0,
+                AutoReplenishment = true
+            }));
+});
     // ==========================================
     // 6. CREAZIONE APPLICAZIONE
     // ==========================================
@@ -176,7 +192,7 @@
 
     // Routing
     app.UseRouting();
-
+    app.UseRateLimiter();
     // Autenticazione e autorizzazione
     app.UseAuthentication();
     app.UseAuthorization();
@@ -192,11 +208,5 @@
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}"
     ).WithStaticAssets();
-
-    // Test temporaneo
-    if (app.Environment.IsDevelopment())
-    {
-        app.MapGet("/ping", () => "Portfolio funzionante!");
-    }
 
     app.Run();

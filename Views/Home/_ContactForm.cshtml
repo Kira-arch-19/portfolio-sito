@@ -1,0 +1,46 @@
+@model Portfolio.DTOs.Contact.ContactFormDto
+
+<div class="home-contact-card">
+    <h3 class="h4 fw-bold mb-3">Inviami un messaggio</h3>
+
+    @if (TempData["ContactSuccess"] is string successMessage)
+    {
+        <div class="alert alert-success" role="status">@successMessage</div>
+    }
+
+    <form asp-controller="Home" asp-action="Contact" method="post" asp-antiforgery="true">
+        <div asp-validation-summary="All" class="home-contact-error mb-3" role="alert"></div>
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Nome</label>
+            <input asp-for="Name" class="form-control" placeholder="Il tuo nome" autocomplete="name" />
+            <span asp-validation-for="Name" class="home-contact-error small"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" type="email" placeholder="nome@azienda.it" autocomplete="email" />
+            <span asp-validation-for="Email" class="home-contact-error small"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Message" class="form-label">Messaggio</label>
+            <textarea asp-for="Message" class="form-control" rows="5"
+                      placeholder="Descrivi la tua proposta o la tua richiesta..."></textarea>
+            <span asp-validation-for="Message" class="home-contact-error small"></span>
+        </div>
+
+        <!-- Antispam: questo campo non deve essere compilato dagli utenti. -->
+        <div class="home-contact-trap" aria-hidden="true">
+            <label asp-for="Website">Sito web</label>
+            <input asp-for="Website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <button type="submit" class="btn btn-light btn-lg w-100">
+            Invia messaggio
+        </button>
+        <p class="home-contact-disclaimer small mt-3 mb-0">
+            I dati inseriti verranno utilizzati esclusivamente per rispondere alla richiesta.
+        </p>
+    </form>
+</div>

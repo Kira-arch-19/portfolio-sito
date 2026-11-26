@@ -1,124 +1,323 @@
-﻿
 @model List<Portfolio.Models.Project>
 
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Matteo Porrini Cattò | Junior Software Developer";
+    ViewData["FullWidth"] = true;
 }
 
-<section class="py-5 text-center">
-    <div class="container">
+<div class="portfolio-home">
+    <!-- La pagina richiede FullWidth=true in _Layout.cshtml. -->
 
-        <p class="text-primary fw-semibold">
-            Junior Software Developer
+    <!-- 1. HERO: presentazione immediata -->
+    <section id="inizio" class="home-hero" aria-labelledby="hero-title">
+        <div class="home-container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-7">
+                <p class="home-eyebrow mb-3">PERITO INFORMATICO / JUNIOR SOFTWARE DEVELOPER</p>
+                <h1 id="hero-title" class="home-hero-title">
+                    Ciao, sono <span>Matteo.</span><br />
+                    Sviluppo software e trasformo idee in progetti concreti.
+                </h1>
+                <p class="home-hero-description mt-4">
+                    Mi occupo di programmazione in <strong>C# e Java</strong>, sviluppo di applicazioni
+                    e utilizzo di database relazionali. Mi interessano il backend, la risoluzione
+                    dei problemi e l'apprendimento continuo di nuove tecnologie.
+                </p>
+
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="#progetti" class="btn btn-primary btn-lg">Scopri i miei progetti</a>
+                    <a href="#contatti" class="btn btn-outline-primary btn-lg">Contattami</a>
+                </div>
+
+                <div class="home-hero-tags mt-4" aria-label="Tecnologie principali">
+                    <span>C#</span><span>Java</span><span>SQL</span><span>PostgreSQL</span><span>Git</span>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="home-profile-card">
+                    <div class="home-monogram" aria-hidden="true">MP</div>
+                    <p class="home-eyebrow text-white-50 mb-2">IN BREVE</p>
+                    <h2 class="h3 fw-bold mb-2">Matteo Porrini Cattò</h2>
+                    <p class="mb-4 text-white-50">Perito informatico · Sviluppatore junior</p>
+                    <div class="home-profile-detail"><span>Focus</span><strong>C# · Java · Backend</strong></div>
+                    <div class="home-profile-detail"><span>Database</span><strong>SQL · PostgreSQL</strong></div>
+                    <div class="home-profile-detail"><span>Interessi</span><strong>Software · Unity 3D</strong></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- 2. PROFILO -->
+    <section id="chi-sono" class="home-section" aria-labelledby="about-title">
+        <div class="home-container">
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-4">
+                <p class="home-eyebrow">01 / PROFILO</p>
+                <h2 id="about-title" class="home-section-title">Chi sono</h2>
+            </div>
+            <div class="col-lg-8">
+                <p class="home-lead">
+                    Sono un perito informatico con una forte passione per la programmazione,
+                    la tecnologia e la creazione di soluzioni pratiche.
+                </p>
+                <p class="text-secondary">
+                    Ho sviluppato competenze in C#, Java e programmazione orientata agli oggetti
+                    attraverso lo studio e progetti concreti. Ho lavorato anche con Unity 3D,
+                    realtà virtuale e strumenti di grafica digitale.
+                </p>
+                <p class="text-secondary mb-0">
+                    L'esperienza come socio-amministratore di Urban Life SRL mi ha permesso
+                    di affiancare alle competenze tecniche organizzazione, autonomia,
+                    rapporto con i clienti e problem solving. Il mio obiettivo è crescere
+                    professionalmente nello sviluppo software.
+                </p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- 3. COMPETENZE -->
+    <section id="competenze" class="home-section" aria-labelledby="skills-title">
+        <div class="home-container">
+        <p class="home-eyebrow">02 / COMPETENZE</p>
+        <h2 id="skills-title" class="home-section-title">Le tecnologie con cui lavoro</h2>
+        <p class="text-secondary mb-4">
+            Competenze sviluppate con la formazione, l'esperienza pratica e i progetti personali.
         </p>
 
-        <h1 class="display-4 fw-bold">
-            Ciao, sono Matteo.
-        </h1>
+        <div class="row g-4">
+            <div class="col-md-6 col-xl-4">
+                <article class="home-info-card h-100">
+                    <span class="home-card-number">01</span>
+                    <h3>Programmazione</h3>
+                    <p>C# e Java, principi OOP, logica e progettazione del codice.</p>
+                    <div class="home-tag-list"><span>C#</span><span>Java</span><span>OOP</span></div>
+                </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <article class="home-info-card h-100">
+                    <span class="home-card-number">02</span>
+                    <h3>Database e strumenti</h3>
+                    <p>Query SQL, dati relazionali e controllo di versione.</p>
+                    <div class="home-tag-list"><span>SQL</span><span>PostgreSQL</span><span>Git</span></div>
+                </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <article class="home-info-card h-100">
+                    <span class="home-card-number">03</span>
+                    <h3>Web e backend</h3>
+                    <p>Applicazioni web e gestione dati: questo Portfolio utilizza ASP.NET Core MVC ed EF Core.</p>
+                    <div class="home-tag-list"><span>ASP.NET Core</span><span>MVC</span><span>EF Core</span></div>
+                </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <article class="home-info-card h-100">
+                    <span class="home-card-number">04</span>
+                    <h3>Unity e realtà immersiva</h3>
+                    <p>Esperienze con Unity 3D, progetti XR e prototipazione di videogiochi.</p>
+                    <div class="home-tag-list"><span>Unity 3D</span><span>XR</span><span>Game development</span></div>
+                </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <article class="home-info-card h-100">
+                    <span class="home-card-number">05</span>
+                    <h3>Formazione Java</h3>
+                    <p>Approfondimenti su Java EE, JPA, Hibernate, JDBC e design pattern.</p>
+                    <div class="home-tag-list"><span>Java EE</span><span>JPA</span><span>Hibernate</span><span>JDBC</span></div>
+                </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <article class="home-info-card h-100">
+                    <span class="home-card-number">06</span>
+                    <h3>Grafica digitale</h3>
+                    <p>Elaborazione immagini, grafica vettoriale e preparazione di file per la stampa.</p>
+                    <div class="home-tag-list"><span>Photoshop</span><span>Illustrator</span><span>3D</span></div>
+                </article>
+            </div>
+        </div>
 
-        <p class="lead text-secondary mt-3">
-            Sviluppo applicazioni software,
-            backend e API REST utilizzando
-            C#, Java e tecnologie moderne.
-        </p>
+        <div class="home-soft-skills mt-4">
+            <h3 class="h5 fw-bold mb-3">Competenze trasversali</h3>
+            <div class="home-tag-list">
+                <span>Problem solving</span>
+                <span>Apprendimento continuo</span>
+                <span>Lavoro in team</span>
+                <span>Organizzazione autonoma</span>
+                <span>Gestione clienti</span>
+            </div>
+        </div>
+        </div>
+    </section>
 
-        <a href="#progetti"
-           class="btn btn-primary mt-3">
-            Scopri i miei progetti
-        </a>
-
-    </div>
-</section>
-
-<section id="progetti" class="py-5">
-    <div class="container">
-
-        <h2 class="fw-bold mb-4">
-            I miei progetti
-        </h2>
+    <!-- 4. PROGETTI: DAL DATABASE, NON STATICI -->
+    <section id="progetti" class="home-section" aria-labelledby="projects-title">
+        <div class="home-container">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+            <div>
+                <p class="home-eyebrow">03 / PORTFOLIO</p>
+                <h2 id="projects-title" class="home-section-title mb-2">I miei progetti</h2>
+                <p class="text-secondary mb-0">Applicazioni e lavori pratici, spiegati attraverso codice e risultati.</p>
+            </div>
+            <a href="https://github.com/Kira-arch-19" target="_blank" rel="noopener noreferrer"
+               class="home-text-link">Tutti i repository su GitHub →</a>
+        </div>
 
         @if (Model.Count == 0)
         {
-            <p class="text-secondary">
-                Nessun progetto disponibile.
-            </p>
+            <div class="home-empty-state">I progetti verranno pubblicati qui a breve.</div>
         }
         else
         {
             <div class="row g-4">
-
                 @foreach (var project in Model)
                 {
-                    var cover = project.Images
-                        .FirstOrDefault(i => i.IsCover)
-                        ?? project.Images
-                            .OrderBy(i => i.Position)
-                            .FirstOrDefault();
+                    var cover = project.Images.FirstOrDefault(i => i.IsCover)
+                        ?? project.Images.OrderBy(i => i.Position).FirstOrDefault();
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 shadow-sm overflow-hidden">
-
+                    <div class="col-md-6 col-xl-4">
+                        <article class="home-project-card h-100">
                             @if (cover != null)
                             {
                                 <img src="@cover.ImageUrl"
-                                     class="card-img-top"
-                                     alt="Copertina di @project.Name"
+                                     alt="Anteprima del progetto @project.Name"
                                      loading="lazy"
-                                     style="aspect-ratio: 16/9; object-fit: cover;" />
+                                     class="home-project-image" />
                             }
                             else
                             {
-                                <div class="bg-body-tertiary d-flex align-items-center justify-content-center"
-                                     style="aspect-ratio: 16/9;">
-                                    <span class="text-secondary">
-                                        Nessuna immagine
-                                    </span>
+                                <div class="home-project-placeholder" aria-label="Nessuna anteprima disponibile">
+                                    <span>PROGETTO SOFTWARE</span>
                                 </div>
                             }
-
-                            <div class="card-body d-flex flex-column">
-
-                                <h3 class="h5 card-title fw-bold">
-                                    @project.Name
-                                </h3>
-
-                                <p class="card-text text-secondary">
-                                    @project.ShortDescription
-                                </p>
-
-                                <p class="small text-secondary">
-                                    <strong>Tecnologie:</strong>
-                                    @project.Technologies
-                                </p>
-
-                                <div class="mt-auto d-grid gap-2">
-
-                                    <a asp-controller="Project"
-                                       asp-action="Page"
-                                       asp-route-id="@project.Id"
-                                       class="btn btn-primary">
-                                        Scopri il progetto
-                                    </a>
-
+                            <div class="home-project-body">
+                                <p class="home-project-overline">PROGETTO</p>
+                                <h3 class="h4 fw-bold mb-2">@project.Name</h3>
+                                <p class="text-secondary mb-3">@project.ShortDescription</p>
+                                @if (!string.IsNullOrWhiteSpace(project.Technologies))
+                                {
+                                    <p class="home-project-technologies">@project.Technologies</p>
+                                }
+                                <div class="d-flex flex-wrap gap-2 mt-auto">
+                                    <a asp-controller="Project" asp-action="Page"
+                                       asp-route-id="@project.Id" class="btn btn-primary btn-sm">Dettagli</a>
                                     @if (!string.IsNullOrWhiteSpace(project.GithubLink))
                                     {
-                                        <a href="@project.GithubLink"
-                                           target="_blank"
-                                           rel="noopener noreferrer"
-                                           class="btn btn-outline-secondary">
-                                            Repository GitHub
-                                        </a>
+                                        <a href="@project.GithubLink" target="_blank" rel="noopener noreferrer"
+                                           class="btn btn-outline-secondary btn-sm">GitHub</a>
                                     }
-
                                 </div>
-
                             </div>
-                        </div>
+                        </article>
                     </div>
                 }
-
             </div>
         }
+        </div>
+    </section>
 
-    </div>
-</section>
+    <!-- 5. ESPERIENZE E RISULTATI -->
+    <section id="esperienze" class="home-section" aria-labelledby="experience-title">
+        <div class="home-container">
+        <p class="home-eyebrow">04 / ESPERIENZA</p>
+        <h2 id="experience-title" class="home-section-title">Esperienze che mi hanno formato</h2>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <article class="home-info-card h-100">
+                    <p class="home-mini-label">ESPERIENZA PROFESSIONALE · 2025–2026</p>
+                    <h3>Socio-amministratore</h3>
+                    <p class="fw-semibold mb-2">Urban Life SRL</p>
+                    <p class="mb-0">Gestione operativa e amministrativa, rapporti con clienti e fornitori,
+                        documentazione, progetti digitali e risoluzione di problemi operativi.</p>
+                </article>
+            </div>
+            <div class="col-lg-6">
+                <article class="home-info-card h-100">
+                    <p class="home-mini-label">PROGETTO FORMATIVO · REALTÀ AUMENTATA</p>
+                    <h3>Erasmus Averti 4.0</h3>
+                    <p class="fw-semibold mb-2">Unity 3D · XR</p>
+                    <p class="mb-0">Sviluppo di un'esperienza di catena di montaggio in realtà aumentata,
+                        con utilizzo di XR Origin e XR Interaction Toolkit, in un contesto internazionale.</p>
+                </article>
+            </div>
+            <div class="col-lg-6">
+                <article class="home-info-card h-100">
+                    <p class="home-mini-label">PROGETTO DI SQUADRA · GAME DEVELOPMENT</p>
+                    <h3>Game Jam</h3>
+                    <p class="fw-semibold mb-2">Premio per i migliori aspetti artistici</p>
+                    <p class="mb-0">Realizzazione di un videogioco in gruppo,
+                        con scadenze definite e collaborazione tra competenze differenti.</p>
+                </article>
+            </div>
+            <div class="col-lg-6">
+                <article class="home-info-card h-100">
+                    <p class="home-mini-label">APPRENDIMENTO CONTINUO</p>
+                    <h3>Formazione e sperimentazione</h3>
+                    <p class="fw-semibold mb-2">Dal codice agli strumenti</p>
+                    <p class="mb-0">Approfondisco tecnologie di sviluppo e sistemi informatici,
+                        applicando ciò che studio a progetti pratici e sperimentali.</p>
+                </article>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- 6. FORMAZIONE -->
+    <section id="formazione" class="home-section" aria-labelledby="education-title">
+        <div class="home-container">
+        <p class="home-eyebrow">05 / FORMAZIONE</p>
+        <h2 id="education-title" class="home-section-title">Il mio percorso formativo</h2>
+        <div class="home-timeline">
+            <div class="home-timeline-item">
+                <span class="home-timeline-date">2018–2023</span>
+                <div><h3>Diploma di Perito Informatico</h3>
+                    <p class="text-secondary mb-0">I.S.I.S. “Città di Luino” Carlo Volonté — programmazione, OOP, database, reti e sistemi.</p></div>
+            </div>
+            <div class="home-timeline-item">
+                <span class="home-timeline-date">2023–2024</span>
+                <div><h3>Percorso universitario in Informatica</h3>
+                    <p class="text-secondary mb-0">Università degli Studi di Torino — esami superati di Fondamenti di Informatica e Programmazione I.</p></div>
+            </div>
+            <div class="home-timeline-item">
+                <span class="home-timeline-date">2024</span>
+                <div><h3>Oracle Academy — Formazione Java</h3>
+                    <p class="text-secondary mb-0">Java, Java EE, JPA, Hibernate, JDBC, Oracle Database 19c, collezioni e design pattern.</p></div>
+            </div>
+        </div>
+        <p class="home-courses-note">
+            <strong>Altri corsi:</strong> Unity3D Corso Base, Illustrazione Digitale, Corso Introduttivo su Python
+            e LFS101 – Introduction to Linux (The Linux Foundation).
+        </p>
+        </div>
+    </section>
+
+    <!-- 7. CONTATTI -->
+    <section id="contatti" class="home-section home-contact-section" aria-labelledby="contact-title">
+        <div class="home-container">
+            <div class="row g-5 align-items-start">
+                <div class="col-lg-5">
+                    <p class="home-eyebrow mb-3">06 / CONTATTI</p>
+                    <h2 id="contact-title" class="home-section-title mb-3">
+                        Hai un'opportunità o un progetto da condividere?
+                    </h2>
+                    <p>Sono interessato a opportunità junior nello sviluppo software,
+                       al confronto con altri professionisti e a nuovi progetti da realizzare.</p>
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a href="https://www.linkedin.com/in/matteoporrinicatto/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="btn btn-outline-light">LinkedIn</a>
+                        <a href="https://github.com/Kira-arch-19"
+                           target="_blank" rel="noopener noreferrer"
+                           class="btn btn-outline-light">GitHub</a>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    @await Html.PartialAsync("_ContactForm",
+                        ViewBag.ContactForm as Portfolio.DTOs.Contact.ContactFormDto
+                            ?? new Portfolio.DTOs.Contact.ContactFormDto())
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

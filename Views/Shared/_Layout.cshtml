@@ -18,7 +18,8 @@
     <link rel="stylesheet"
           href="~/css/site.css"
           asp-append-version="true" />
-
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
     <!-- CSS ISOLATION -->
     <link rel="stylesheet"
           href="~/Portfolio.styles.css"
@@ -111,20 +112,16 @@
                         </li>
 
 
-                        <!-- GITHUB -->
+                        <!-- Contatti -->
+<li class="nav-item">
+    <a class="nav-link"
+       asp-controller="Home"
+       asp-action="Index"
+       asp-fragment="contatti">
+        Contatti
+    </a>
+</li>
 
-                        <li class="nav-item">
-
-                            <a class="navbar-github"
-                               href="https://github.com/Kira-arch-19"
-                               target="_blank"
-                               rel="noopener noreferrer">
-
-                                GitHub
-
-                            </a>
-
-                        </li>
 
                     </ul>
 
