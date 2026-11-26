@@ -1,10 +1,12 @@
-
+    using Microsoft.AspNetCore.HttpOverrides;
+    using System.Net;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.RateLimiting;
-using System.Threading.RateLimiting;
+    using Microsoft.AspNetCore.RateLimiting;
+    using System.Threading.RateLimiting;
+    using Microsoft.AspNetCore.DataProtection;    
     using Portfolio.Data;
     using Portfolio.Models;
     using Portfolio.Services;
@@ -15,13 +17,40 @@ using System.Threading.RateLimiting;
     // ==========================================
     // 1. MVC E RAZOR
     // ==========================================
+// ==========================================
+// DATA PROTECTION - DOCKER
+// ==========================================
 
+// Salva le chiavi crittografiche nel volume Docker.
+// Evita di invalidare i cookie quando il container
+// viene ricreato.
+
+builder.Services.AddDataProtection()
+    .SetApplicationName("Portfolio")
+    .PersistKeysToFileSystem(
+        new DirectoryInfo("/app/keys"));
     builder.Services.AddControllersWithViews(options =>
     {
     options.Filters.Add(
         new Microsoft.AspNetCore.Mvc.AutoValidateAntiforgeryTokenAttribute()
     );
     });
+// ==========================================
+// REVERSE PROXY - CADDY
+// ==========================================
+
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders =
+        ForwardedHeaders.XForwardedFor |
+        ForwardedHeaders.XForwardedProto;
+
+    // Consideriamo attendibile soltanto il gateway
+    // Docker utilizzato dal reverse proxy.
+    options.KnownProxies.Add(IPAddress.Parse("172.18.0.1"));
+
+    options.ForwardLimit = 1;
+});
     // ==========================================
     // 2. DATABASE POSTGRESQL
     // ==========================================
@@ -116,7 +145,9 @@ builder.Services.AddRateLimiter(options =>
     // ==========================================
 
     var app = builder.Build();
-
+// Deve essere eseguito prima dei middleware HTTPS,
+// HSTS e autenticazione.
+app.UseForwardedHeaders();
     if (app.Environment.IsDevelopment())
     {
         using var scope = app.Services.CreateScope();

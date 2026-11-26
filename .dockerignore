@@ -1,0 +1,6 @@
+
+app.env
+.git
+**/bin
+**/obj
+**/TestResults

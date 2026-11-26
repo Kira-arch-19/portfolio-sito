@@ -1,0 +1,37 @@
+
+name: portfolio-site
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: portfolio-app
+    restart: unless-stopped
+
+    env_file:
+      - app.env
+
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_HTTP_PORTS: "8080"
+
+    ports:
+      - "127.0.0.1:8085:8080"
+
+    volumes:
+      - portfolio_uploads:/app/wwwroot/uploads
+      - portfolio_keys:/app/keys
+
+    networks:
+      - database
+
+networks:
+  database:
+    external: true
+    name: postgres_default
+
+volumes:
+  portfolio_uploads:
+  portfolio_keys:
